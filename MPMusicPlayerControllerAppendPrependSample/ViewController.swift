@@ -41,7 +41,7 @@ class ViewController: UITableViewController {
         
         // append: Adds the contents of the queue descriptor to the end of the queue
         
-        // append method is not work as expected with iOS 10.3 beta 1
+        // append method is not work as expected with iOS 10.3 beta 2
         musicPlayerController.append(descriptor)
     }
     
@@ -50,7 +50,7 @@ class ViewController: UITableViewController {
         
         // prepend: Inserts the contents of the queue descriptor after the now playing item
         
-        // prepend method is not work as expected with iOS 10.3 beta 1
+        // prepend method is not work as expected with iOS 10.3 beta 2
         musicPlayerController.prepend(descriptor)
     }
 }
