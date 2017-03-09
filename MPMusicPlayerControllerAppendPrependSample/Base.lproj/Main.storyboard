@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12100" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Kiq-oT-3GQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12117" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cOK-K5-PPa">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12072"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12084"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -52,12 +52,13 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IWG-HO-8Uv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1248.8" y="176.76161919040482"/>
+            <point key="canvasLocation" x="2188" y="176.76161919040482"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Item-->
         <scene sceneID="Vu1-kv-bhw">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kiq-oT-3GQ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Zpc-Fw-Cfk"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XQg-DO-tJc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -70,7 +71,116 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bS3-Dl-9fx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="309.60000000000002" y="176.76161919040482"/>
+            <point key="canvasLocation" x="1248.8" y="176.76161919040482"/>
+        </scene>
+        <!--Second View Controller-->
+        <scene sceneID="BYc-q8-MM9">
+            <objects>
+                <viewController id="eVm-98-743" customClass="SecondViewController" customModule="MPMusicPlayerControllerAppendPrependSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Yw3-ac-Tqd"/>
+                        <viewControllerLayoutGuide type="bottom" id="IzK-rP-33j"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2cQ-U2-92q">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rhy-IG-mFy">
+                                <rect key="frame" x="20" y="258.5" width="335" height="150"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="09O-Z3-98b">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StoreID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ESj-Ob-YrG">
+                                                <rect key="frame" x="0.0" y="0.0" width="57.5" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1015827178" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gfG-ju-2yK">
+                                                <rect key="frame" x="67.5" y="0.0" width="267.5" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsy-tc-C1P">
+                                        <rect key="frame" x="0.0" y="40" width="335" height="30"/>
+                                        <state key="normal" title="set queue and play"/>
+                                        <connections>
+                                            <action selector="didTapSetQueueAndPlay:" destination="eVm-98-743" eventType="touchUpInside" id="bjg-DD-nFx"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MyX-Kx-fgQ">
+                                        <rect key="frame" x="0.0" y="80" width="335" height="30"/>
+                                        <state key="normal" title="append"/>
+                                        <connections>
+                                            <action selector="didtapAppend:" destination="eVm-98-743" eventType="touchUpInside" id="b4W-YE-D6l"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z7f-px-ZSa">
+                                        <rect key="frame" x="0.0" y="120" width="335" height="30"/>
+                                        <state key="normal" title="prepend"/>
+                                        <connections>
+                                            <action selector="didTapPrepend:" destination="eVm-98-743" eventType="touchUpInside" id="VVM-Iw-Lmy"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rhy-IG-mFy" firstAttribute="leading" secondItem="2cQ-U2-92q" secondAttribute="leading" constant="20" id="3Hx-Su-Uxq"/>
+                            <constraint firstAttribute="trailing" secondItem="rhy-IG-mFy" secondAttribute="trailing" constant="20" id="Z2i-pU-wSh"/>
+                            <constraint firstItem="rhy-IG-mFy" firstAttribute="centerY" secondItem="2cQ-U2-92q" secondAttribute="centerY" id="n6o-q9-siW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="qkh-hX-mbK"/>
+                    <connections>
+                        <outlet property="textField" destination="gfG-ju-2yK" id="SyJ-9Q-Gqo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Lb-JC-kWS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2188" y="880.20989505247383"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="RAI-hD-bxX">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="cOK-K5-PPa" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="jqX-hz-gL3">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Kiq-oT-3GQ" kind="relationship" relationship="viewControllers" id="rj9-F4-6OI"/>
+                        <segue destination="wZR-5s-4Ab" kind="relationship" relationship="viewControllers" id="2v1-kN-VrK"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jGV-tl-18T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="399" y="177"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="CvF-nX-55b">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wZR-5s-4Ab" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="YmG-15-mpe"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6ae-nt-ru5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="eVm-98-743" kind="relationship" relationship="rootViewController" id="vQ5-6b-qxF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b2Y-65-43p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1248.8" y="880.20989505247383"/>
         </scene>
     </scenes>
 </document>
