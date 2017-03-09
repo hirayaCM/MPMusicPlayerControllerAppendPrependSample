@@ -28,58 +28,46 @@ class ViewController: UITableViewController {
         picker.delegate = self
         present(picker, animated: true, completion: nil)
     }
-    
-    func setQueue(mediaItemCollection: MPMediaItemCollection) {
-        // setQueue and prepare
-        let descriptor = MPMusicPlayerMediaItemQueueDescriptor(itemCollection: mediaItemCollection)
-        musicPlayerController.setQueueWith(descriptor)
-        musicPlayerController.play()
-    }
-    
-    func appendQueue(mediaItemCollection: MPMediaItemCollection) {
-        let descriptor = MPMusicPlayerMediaItemQueueDescriptor(itemCollection: mediaItemCollection)
-        
-        // append: Adds the contents of the queue descriptor to the end of the queue
-        
-        // append method is not work as expected with iOS 10.3 beta 2
-        musicPlayerController.append(descriptor)
-    }
-    
-    func prependQueue(mediaItemCollection: MPMediaItemCollection) {
-        let descriptor = MPMusicPlayerMediaItemQueueDescriptor(itemCollection: mediaItemCollection)
-        
-        // prepend: Inserts the contents of the queue descriptor after the now playing item
-        
-        // prepend method is not work as expected with iOS 10.3 beta 2
-        musicPlayerController.prepend(descriptor)
-    }
 }
 
 // MARK: - MPMediaPickerControllerDelegate
 extension ViewController: MPMediaPickerControllerDelegate {
     func mediaPicker(_ mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
+        
+        // MPMusicPlayerController append and prepend don't work with MPMusicPlayerMediaItemQueueDescriptor constructed with MPMediaItemCollection.
+        // http://www.openradar.me/30298287
+        
+        // This bug Reproduced with iOS 10.3 beta 5
+        
+        // Therefore, use MPMusicPlayerMediaItemQueueDescriptor constructed with MPMediaQuery.
+        let predicate = MPMediaPropertyPredicate(value: mediaItemCollection.representativeItem!.persistentID,
+                                                 forProperty: MPMediaItemPropertyPersistentID)
+        let query = MPMediaQuery(filterPredicates: [predicate])
+        let descriptor = MPMusicPlayerMediaItemQueueDescriptor(query: query)
+        
         let ac = UIAlertController(title: nil,
                                    message: nil,
                                    preferredStyle: .actionSheet)
         ac.addAction(
-            UIAlertAction(title: "setQueue",
+            UIAlertAction(title: "set queue and play",
                           style: .default) { action in
-                            print("setQueue")
-                            self.setQueue(mediaItemCollection: mediaItemCollection)
+                            print("set queue and play")
+                            self.musicPlayerController.setQueueWith(descriptor)
+                            self.musicPlayerController.play()
             }
         )
         ac.addAction(
             UIAlertAction(title: "append",
                           style: .default) { action in
                             print("append")
-                            self.appendQueue(mediaItemCollection: mediaItemCollection)
+                            self.musicPlayerController.append(descriptor)
             }
         )
         ac.addAction(
             UIAlertAction(title: "prepend",
                           style: .default) { action in
                             print("prepend")
-                            self.prependQueue(mediaItemCollection: mediaItemCollection)
+                            self.musicPlayerController.prepend(descriptor)
             }
         )
         
